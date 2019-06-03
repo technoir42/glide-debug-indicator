@@ -1,0 +1,65 @@
+plugins {
+    id "com.android.library"
+    id "org.jetbrains.kotlin.android"
+    id "com.github.technoir42.aar-publish" version "1.0.2"
+    id "com.jfrog.bintray" version "1.8.4"
+    id "maven-publish"
+}
+
+group = "com.github.technoir42"
+version = "0.9"
+
+android {
+    compileSdkVersion 28
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 28
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    libraryVariants.all { variant ->
+        variant.generateBuildConfigProvider.configure { enabled = false }
+    }
+}
+
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+dependencies {
+    implementation "androidx.appcompat:appcompat:$versions.appcompat"
+    api "com.github.bumptech.glide:glide:$versions.glide"
+    compileOnly "org.jetbrains.kotlin:kotlin-stdlib:$versions.kotlin"
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.android
+        }
+    }
+}
+
+bintray {
+    user = findProperty("BINTRAY_USER")
+    key = findProperty("BINTRAY_KEY")
+    publish = true
+
+    pkg {
+        repo = "maven"
+        name = "glide-debug-indicator"
+        licenses = ["Apache-2.0"]
+        vcsUrl = "https://github.com/technoir42/glide-debug-indicator.git"
+        version {
+            name = project.version
+        }
+        publications = ["maven"]
+    }
+}

@@ -50,6 +50,12 @@ public class MyAppGlideModule extends AppGlideModule {
 }
 ```
 
+## Legend
+- ![#00ff00](https://placehold.it/15/00ff00/000000?text=+) Memory Cache
+- ![#0066ff](https://placehold.it/15/0066ff/000000?text=+) Disk Cache
+- ![#ff0000](https://placehold.it/15/ff0000/000000?text=+) Remote
+- ![#ffff00](https://placehold.it/15/ffff00/000000?text=+) Local
+
 ## License
 
 ```

@@ -19,6 +19,10 @@ subprojects {
     }
 }
 
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
 ext.versions = [
     appcompat: "1.0.2",
     glide    : "4.9.0",

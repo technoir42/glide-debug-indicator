@@ -44,6 +44,29 @@ publishing {
     publications {
         maven(MavenPublication) {
             from components.android
+
+            pom {
+                name = "Glide Debug Indicator"
+                description = "Library for debugging resource caching in Glide."
+                url = "https://github.com/technoir42/glide-debug-indicator"
+                licenses {
+                    license {
+                        name = "The Apache License, Version 2.0"
+                        url = "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                    }
+                }
+                developers {
+                    developer {
+                        id = "technoir"
+                        name = "Sergey Chelombitko"
+                    }
+                }
+                scm {
+                    connection = "scm:git:git://github.com/technoir42/glide-debug-indicator.git"
+                    developerConnection = "scm:git:ssh://git@github.com/technoir42/glide-debug-indicator.git"
+                    url = "https://github.com/technoir42/glide-debug-indicator"
+                }
+            }
         }
     }
 }

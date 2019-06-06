@@ -1,4 +1,4 @@
-@file:JvmName("-Extensions")
+@file:JvmName("-KotlinExtensions")
 
 package com.github.technoir42.glide.debug.indicator
 

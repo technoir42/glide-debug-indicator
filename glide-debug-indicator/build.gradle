@@ -4,6 +4,7 @@ plugins {
     id "com.github.technoir42.aar-publish" version "1.0.2"
     id "com.jfrog.bintray" version "1.8.4"
     id "maven-publish"
+    id "signing"
 }
 
 group = "com.github.technoir42"
@@ -45,6 +46,10 @@ publishing {
             from components.android
         }
     }
+}
+
+signing {
+    sign publishing.publications.maven
 }
 
 bintray {

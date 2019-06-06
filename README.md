@@ -11,7 +11,7 @@ Displays a colored ribbon over images which indicates where the image was loaded
 
 ```gradle
 dependencies {
-    debugImplementation "com.github.technoir42:glide-debug-indicator:0.9"
+    debugImplementation "com.github.technoir42:glide-debug-indicator:0.9.1"
 }
 ```
 

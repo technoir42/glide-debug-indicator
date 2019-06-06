@@ -2,13 +2,12 @@ plugins {
     id "com.android.library"
     id "org.jetbrains.kotlin.android"
     id "com.github.technoir42.aar-publish" version "1.0.2"
-    id "com.jfrog.bintray" version "1.8.4"
     id "maven-publish"
     id "signing"
 }
 
 group = "com.github.technoir42"
-version = "0.9"
+version = "0.9.1"
 
 android {
     compileSdkVersion 28
@@ -69,25 +68,19 @@ publishing {
             }
         }
     }
+
+    repositories {
+        maven {
+            name = "bintray"
+            url = "https://api.bintray.com/maven/sch/maven/glide-debug-indicator/;publish=1"
+            credentials {
+                username = findProperty("BINTRAY_USER")
+                password = findProperty("BINTRAY_KEY")
+            }
+        }
+    }
 }
 
 signing {
     sign publishing.publications.maven
-}
-
-bintray {
-    user = findProperty("BINTRAY_USER")
-    key = findProperty("BINTRAY_KEY")
-    publish = true
-
-    pkg {
-        repo = "maven"
-        name = "glide-debug-indicator"
-        licenses = ["Apache-2.0"]
-        vcsUrl = "https://github.com/technoir42/glide-debug-indicator.git"
-        version {
-            name = project.version
-        }
-        publications = ["maven"]
-    }
 }
